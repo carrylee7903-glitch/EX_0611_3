@@ -1,4 +1,5 @@
 langchain-community
+
 angchain-text-splitters
 langchain-openai 
 langchain-chroma
