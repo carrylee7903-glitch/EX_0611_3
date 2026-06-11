@@ -103,7 +103,7 @@ if uploaded_file is not None:
                 handler = StreamHandler(      chat_box       )
 
                 llm = ChatOpenAI(
-                    model="gpt-4.1-mini",
+                    model="gpt-4o-mini",
                     temperature=0,
                     api_key=openai_key,
                     streaming=True,
@@ -125,5 +125,14 @@ if uploaded_file is not None:
                     retriever,
                     document_chain
                 )
+            ###############################################
+                def stream_answer():
+                    for chunk in qa_chain.stream({"input": question}):
+                        if answer_chunk := chunk.get("answer"):
+                            yield answer_chunk
 
-                qa_chain.invoke(    {    "input": question    }      )
+                st.write_stream(stream_answer)
+            ###################################################
+                # result = qa_chain.invoke(    {    "input": question    }      )
+                # st.write(result["answer"] )  # 이 부분 빠졌었습니다.
+                
