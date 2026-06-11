@@ -8,4 +8,5 @@ load_dotenv
 langchain_classic
 langchain_core
 tiktoken
+pypdf
 
